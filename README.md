@@ -3,9 +3,9 @@
 The dataset contains all paper titles, authors and their affiliations from the
 years
 
-- ICML: 2017-2023
-- NeurIPS: 2006-2022
-- ICLR: 2018-2023 (except 2020)
+- ICML: 2017-2024
+- NeurIPS: 2006-2024
+- ICLR: 2018-2024 (except 2020)
 
 The earliest years are always the years in which the respective conference
 introduced the web interface which this script is compatible with.

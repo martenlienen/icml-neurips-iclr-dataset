@@ -18,6 +18,8 @@ REQUESTS_PBAR: tqdm = None
 # once, some would inevitably time out at some point.
 OPEN_REQUESTS: asyncio.Semaphore = None
 
+SPEAKER_ID_REGEX = re.compile(r"showSpeaker\('([\d-]+)'\)")
+
 
 def retry_on_server_disconnect(n_tries: int):
     def decorator(f):
@@ -58,8 +60,9 @@ async def load_paper(session: aiohttp.ClientSession, url):
     box = doc.select(".maincard")[0].parent
     title = box.select(".maincardBody")[0].text.strip()
     authors = [
-        (b.text.strip()[:-2].strip(), b.attrs["onclick"][13:-3])
-        for b in box.findAll("button")
+        (b.text.strip(), SPEAKER_ID_REGEX.match(b.attrs["onclick"]).group(1))
+        for b in box.find_all("button")
+        if "showSpeaker" in b.attrs.get("onclick", "")
     ]
 
     return title, authors
