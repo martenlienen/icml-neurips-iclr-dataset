@@ -1,0 +1,19 @@
+[workspace]
+authors = ["Marten Lienen <m@martenlienen.com>"]
+channels = ["conda-forge"]
+name = "icml-neurips-iclr-dataset"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "==3.13.2"
+ipdb = "==0.13.13"
+
+[pypi-dependencies]
+aiohttp = { version = "==3.11.16", extras = ["speedups"] }
+beautifulsoup4 = "==4.13.3"
+lxml = "==5.3.1"
+pandas = "==2.2.3"
+tqdm = "==4.67.1"

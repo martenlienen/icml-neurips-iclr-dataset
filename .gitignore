@@ -1,2 +1,6 @@
 # Jupyter checkpoints
 .ipynb_checkpoints
+
+# pixi environments
+.pixi
+*.egg-info
