@@ -32,7 +32,7 @@ def retry_on_server_disconnect(n_tries: int):
                     if i == n_tries - 1:
                         print("Client error, try again: {e}")
                         raise
-
+            await asyncio.sleep(0)
         return wrapper
 
     return decorator
@@ -172,7 +172,8 @@ async def main():
 
     with tqdm(total=0) as pbar:
         REQUESTS_PBAR = pbar
-        async with aiohttp.ClientSession() as session:
+        connector = aiohttp.TCPConnector(limit=50, force_close=True)
+        async with aiohttp.ClientSession(connector=connector) as session:
             paper_tasks = [
                 conf.scrape(year, session)
                 for conf in conferences
@@ -193,4 +194,5 @@ async def main():
 
 
 if __name__ == "__main__":
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(main())
