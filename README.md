@@ -25,6 +25,8 @@ just this one year. For 2021 their schedule includes poster sessions for all pap
 as usual. This alternate schedule page is not covered by the scraping script which is why
 there are no papers for ICLR2020.
 
+In 2025 the website format was updated and no longer includes affiliation information for the authors. Therefore, I will *no longer update this dataset from 2025 onward*.
+
 ## Update the Data
 
 The first and definitely correct option is to re-scrape the whole dataset as in the
